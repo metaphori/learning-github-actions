@@ -1,0 +1,21 @@
+name: 01-workflow-more-events # (optional) workflow name (appearing in Actions tab)
+on:
+  push: # Trigger the workflow on push
+    branches:
+      - master # but only for the main branch
+  release: # Also trigger on release...
+    types:
+      - created # ...created
+  workflow_dispatch: # manual event
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+jobs:
+  hello-job: # job name
+    runs-on: ubuntu-latest # run on Ubuntu on a fresh VM hosted by GH
+    steps:
+      - uses: actions/checkout@v2   # to checkout the repo to runner
+      - run: cat README.md
+      - run: echo "Hello ${{github.event.inputs.name}}!""
