@@ -1,7 +1,7 @@
-name: my-workflow # (optional) workflow name (appearing in Actions tab)
+name: 00-workflow-hello # (optional) workflow name (appearing in Actions tab)
 on: [push]
 jobs:
-  check-bats-version: # job name
+  hello-job: # job name
     runs-on: ubuntu-latest # run on Ubuntu on a fresh VM hosted by GH
     steps:
       - uses: actions/checkout@v2   # to checkout the repo to runner
